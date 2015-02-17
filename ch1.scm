@@ -1,8 +1,10 @@
 #lang racket
 
 (define (square x) (* x x))
+
 (define (sum-of-squares x y)
   (+ (square x) (square y)))
+
 
 ; -- 1.1 --
 ; (define a 3)
@@ -169,24 +171,24 @@
 
 
 ; -- 1.8 --
-(define (cube-rt-iter guess previous-guess x)
-  (if (good-enough? guess previous-guess)
-    guess
-    (cube-rt-iter (improve guess x)
-                  guess
-                  x)))
+; (define (cube-rt-iter guess previous-guess x)
+;   (if (good-enough? guess previous-guess)
+;     guess
+;     (cube-rt-iter (improve guess x)
+;                   guess
+;                   x)))
 
-(define (improve guess x)
-  (/ (+ (/ x
-           (square guess))
-        (* 2 guess))
-     3))
+; (define (improve guess x)
+;   (/ (+ (/ x
+;            (square guess))
+;         (* 2 guess))
+;      3))
 
-(define (good-enough? guess previous-guess)
-  (< (abs (- guess previous-guess))
-     .0001))
+; (define (good-enough? guess previous-guess)
+;   (< (abs (- guess previous-guess))
+;      .0001))
 
-(define (cube-rt x)
-  (cube-rt-iter 1.0 0 x))
+; (define (cube-rt x)
+;   (cube-rt-iter 1.0 0 x))
 
-(cube-rt 9)
+; (cube-rt 9)
