@@ -38,16 +38,33 @@
 
 
 ; --- 1.11 ---
+; (define (f n)
+;   (if (< n 3)
+;     n
+;     (+ (f (- n 1))
+;        (* 2 (f (- n 2)))
+;        (* 3 (f (- n 3))))))
+; (f 6)
+; recursive way
+
 (define (f n)
   (if (< n 3)
     n
-    (+ (- n 1) (* (* 2 f) (- n 2)) (* (* 3 f) (- n 3)) )))
-(f 3)
+    (f-iter 2 1 0 n)))
+(define (f-iter a b c count)
+  (if (< count 3)
+    a
+    (f-iter (+ a (* 2 b) (* 3 c))
+            a
+            b
+            (- count 1))))
+(f 5)
+;iterative way -- never calls itself. copy of fib-iter
 
 
 
-
-
+; --- 1.12 ---
+; pascal's triangle
 
 
 
