@@ -47,25 +47,56 @@
 ; (f 6)
 ; recursive way
 
-(define (f n)
-  (if (< n 3)
-    n
-    (f-iter 2 1 0 n)))
-(define (f-iter a b c count)
-  (if (< count 3)
-    a
-    (f-iter (+ a (* 2 b) (* 3 c))
-            a
-            b
-            (- count 1))))
-(f 5)
+; (define (f n)
+;   (if (< n 3)
+;     n
+;     (f-iter 2 1 0 n)))
+; (define (f-iter a b c count)
+;   (if (< count 3)
+;     a
+;     (f-iter (+ a (* 2 b) (* 3 c))
+;             a
+;             b
+;             (- count 1))))
+; (f 5)
 ;iterative way -- never calls itself. copy of fib-iter
 
 
 
 ; --- 1.12 ---
 ; pascal's triangle
+; generating function for nth row = (x + 1)^n
+
+; (define (pascal row col)
+;   (cond ((< row col) #f)
+;         ((or (= 0 col) (= row col)) 1)
+;         (else (+ (pascal (- row 1) col)
+;                  (pascal (- row 1) (- col 1))))))
+; (pascal 6 3)
 
 
 
+; --- 1.13 ---
+; prove that fib(n) is the closest
+; (define (fib n)
+;   (cond ((= n 0) 0)
+;         ((= n 1) 1)
+;         (else (+ (fib (- n 1))
+;                  (fib (- n 2))))))
 
+; (define psi
+;   (/ (- 1 (sqrt 5)) 2))
+
+; (define phi
+;   (/ (+ 1 (sqrt 5)) 2))
+
+; (define (^ base exponent)
+;   (define (*^ exponent acc)
+;     (if (= exponent 0)
+;       acc
+;       (*^ (- exponent 1) (* acc base))))
+;   (*^ exponent 1))
+
+; (define (proof n)
+;   (/ (^ phi n) (sqrt 5)))
+; (proof 1)
